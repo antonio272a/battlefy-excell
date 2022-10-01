@@ -1,5 +1,5 @@
-const fs = require("fs");
 const { convertCsvToXlsx } = require("@aternus/csv-to-xlsx");
+const fs = require("fs");
 
 const WITH_ID = false;
 
@@ -114,7 +114,6 @@ const handleFreeAgents = () => {
     })
   })
 
-
   const headersCsv = freeAgentsHeader.join(',');
   const playersCsv = withoutTeamData.map((p) => p.join(',')).join('\n')
   
@@ -124,21 +123,18 @@ const handleFreeAgents = () => {
   return finalFreeAgentCsv
 }
 
-const teamsCsv = handleTeams();
-const freeAgentsCsv = handleFreeAgents();
-
-const finalCsv = `${teamsCsv}\n\n\nFree Agents\n${freeAgentsCsv}`
-
-// return
-fs.writeFileSync("result.csv", finalCsv);
-try {
-  fs.rmSync("./result.xlsx");
-} catch (error) {}
-
-try {
-  convertCsvToXlsx("./result.csv", "./result.xlsx");
-} catch (e) {
-  console.log(e);
+const createCsv = () => {
+  const teamsCsv = handleTeams();
+  const freeAgentsCsv = handleFreeAgents();
+  const finalCsv = `${teamsCsv}\nEnd of Teams\n\nFree Agents\n${freeAgentsCsv}`
+  return finalCsv
 }
 
-fs.rmSync("./result.csv");
+module.exports = createCsv
+
+// const finalCsv = createCsv();
+
+
+
+
+
