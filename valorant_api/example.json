@@ -1,0 +1,117 @@
+{
+  "name": "susxnoo",
+  "tag": "1234",
+  "puuid": "0271d67f-6ceb-5bc0-bb42-e8bec932fb52",
+  "current_data": {
+    "currenttier": 15,
+    "currenttierpatched": "Platinum 1",
+    "images": {
+      "small": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/smallicon.png",
+      "large": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/largeicon.png",
+      "triangle_down": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/ranktriangledownicon.png",
+      "triangle_up": "https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/15/ranktriangleupicon.png"
+    },
+    "ranking_in_tier": 50,
+    "mmr_change_to_last_game": -17,
+    "elo": 1250,
+    "games_needed_for_rating": 0,
+    "old": false
+  },
+  "by_season": {
+    "e5a3": {
+      "error": "No data Available"
+    },
+    "e5a2": {
+      "wins": 9,
+      "number_of_games": 21,
+      "final_rank": 15,
+      "final_rank_patched": "Platinum 1",
+      "act_rank_wins": [
+        {
+          "patched_tier": "Platinum 1",
+          "tier": 15
+        },
+        {
+          "patched_tier": "Platinum 1",
+          "tier": 15
+        },
+        {
+          "patched_tier": "Platinum 1",
+          "tier": 15
+        },
+        {
+          "patched_tier": "Platinum 1",
+          "tier": 15
+        },
+        {
+          "patched_tier": "Platinum 1",
+          "tier": 15
+        },
+        {
+          "patched_tier": "Gold 2",
+          "tier": 13
+        },
+        {
+          "patched_tier": "Gold 2",
+          "tier": 13
+        },
+        {
+          "patched_tier": "Gold 2",
+          "tier": 13
+        },
+        {
+          "patched_tier": "Gold 2",
+          "tier": 13
+        },
+        {
+          "patched_tier": "Unrated",
+          "tier": 0
+        },
+        {
+          "patched_tier": "Unrated",
+          "tier": 0
+        }
+      ],
+      "old": false
+    },
+    "e5a1": {
+      "error": "No data Available"
+    },
+    "e4a3": {
+      "error": "No data Available"
+    },
+    "e4a2": {
+      "error": "No data Available"
+    },
+    "e4a1": {
+      "error": "No data Available"
+    },
+    "e3a3": {
+      "error": "No data Available"
+    },
+    "e3a2": {
+      "error": "No data Available"
+    },
+    "e3a1": {
+      "error": "No data Available"
+    },
+    "e2a3": {
+      "error": "No data Available"
+    },
+    "e2a2": {
+      "error": "No data Available"
+    },
+    "e2a1": {
+      "error": "No data Available"
+    },
+    "e1a3": {
+      "error": "No data Available"
+    },
+    "e1a2": {
+      "error": "No data Available"
+    },
+    "e1a1": {
+      "error": "No data Available"
+    }
+  }
+}

@@ -130,12 +130,12 @@
    }
  
    async makeRequest(url) {
-    try {
-      const res = await fetch(url);
+     const res = await fetch(url);
+     try {
       const json = await res.json()
       return { data: json };
     } catch (error) {
-      return {error: 'Paladins API is down'} 
+      return { error: error } 
     }
    }
  
