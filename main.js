@@ -1,17 +1,40 @@
 const XLSX = require("xlsx-js-style/dist/xlsx.bundle");
 const createCsv = require("./createCsv");
 const _ = require("lodash");
-const {
-  getPlayerRank,
-  createInstance,
-} = require("./paladins_api/getPlayerRankPaladins");
-const { ranks, rankText } = require("./paladins_api/constants.js");
+const Paladins = require("./paladins_api/getPlayerRankPaladins");
+const Valorant = require("./valorant_api/valorant_api");
+
+
+const selectedGame = 'valorant'
+
+const RanksPaladins = require("./paladins_api/constants.js");
+const RanksValorant = require("./valorant_api/constants.js");
+
+const gameRanks = {
+  'paladins': {
+    ranks: RanksPaladins.ranks,
+    ranksText: RanksPaladins.ranksText
+  },
+  'valorant': {
+    ranks: RanksValorant.ranks,
+    ranksText: RanksValorant.ranksText
+  }
+}
+
+const { ranks, ranksText } = gameRanks[selectedGame];
+
+const gameWrappers = {
+  'paladins': Paladins,
+  'valorant': Valorant
+}
+
 const csv = createCsv();
 
-const MIN_RANK = rankText["Bronze_V"];
-const MAX_RANK = rankText["Diamond_III"];
-const allRanks = Object.keys(ranks);
-const allRanksText = Object.keys(rankText);
+const MIN_RANK = ranksText["Iron 1"];
+// const MIN_RANK = ranksText["Bronze_V"];
+// const MAX_RANK = ranksText["Diamond_III"];
+const MAX_RANK = ranksText["Platinum 2"];
+const allRanksText = Object.keys(ranksText);
 // console.log(allRanks);
 const styles = {
   Inexistente: { fill: { fgColor: { rgb: "ffff66" } } }, // Amarelo
@@ -55,24 +78,23 @@ try {
   });
   
   const getRanks = async () => {
-    const paladinsInstance = await createInstance();
+    const wrapper = gameWrappers[selectedGame];
+    const instance = await wrapper.createInstance();
 
-    console.log(paladinsInstance);
     const withRanks = players.map(async (p) => ({
       ...p,
-      rank: await getPlayerRank(paladinsInstance, p.playerName),
+      rank: await wrapper.getPlayerRank(instance, p.playerName),
     }));
     const playersWithRank = await Promise.all(withRanks);
     const categorizedPlayers = playersWithRank.map((p) => {
       const hasRank = allRanksText.includes(p.rank);
       if(!hasRank || p.rank === ranks['0']) return {...p, status: p.rank, style: styles[p.rank]};
-        const fits = rankText[p.rank] >= MIN_RANK && rankText[p.rank] <= MAX_RANK;
+        const fits = ranksText[p.rank] >= MIN_RANK && ranksText[p.rank] <= MAX_RANK;
 
       const status = fits ? 'apto' : 'n-apto'
-
       return { ...p, status, style: styles[status] }
-  })
-  // console.log(sheet);
+    })
+    console.log(categorizedPlayers);
 
     categorizedPlayers.forEach((p) => {
       // console.log(p.position, p.playerName, p.status);

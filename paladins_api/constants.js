@@ -48,7 +48,7 @@ module.exports = {
     27:'Grandmaster',
   },
 
-  rankText: {
+  ranksText: {
     'Unranked':0, // Qualifying
     'Bronze_V':1,
     'Bronze_IV':2,
